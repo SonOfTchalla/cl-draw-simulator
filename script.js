@@ -239,4 +239,10 @@ teams.map((team) => {
 
 //step 3: start the draw, randomly select a team from all the pots.
 
+//Query Selectors
+let drawBtn = document.querySelector(".gen");
+let teamEl = document.querySelector("#team");
+let genBtn = document.querySelector("#genFix");
+let fixEl = document.querySelector("#fixtures");
+
 //step 4: for that team, randomly select n/4 team that they will play, exluding themseles. ranmly selecting wheher home or away. 
