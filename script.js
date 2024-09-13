@@ -250,13 +250,38 @@ function genRandomNum(num){
     return Math.floor(Math.random() * num);
 }
 
-//event listeners
+function genRandomLoc(){
+    let number = genRandomNum(2);
+    if(number === 0){
+        return " (H)";
+    }else{
+        return " (A)";
+    }
+}
+
+let team = "";
+//event listener
 let drawFired = false
 drawBtn.addEventListener("click", () => {
     if(!drawFired){
-        let team = teams[genRandomNum(36)].name;
+        team = teams[genRandomNum(36)].name;
         teamEl.textContent += team;
         drawFired = true;
     }
 })
+
 //step 4: for that team, randomly select n/4 team that they will play, exluding themseles. ranmly selecting wheher home or away. 
+let fixtureList = [];
+let fixtureCount = 1;
+let genFired = false;
+
+genBtn.addEventListener("click", () => {
+    if(!genFired){
+        while(fixtureCount != 9){
+            fixtureList.push(" " + teams[genRandomNum(36)].name + genRandomLoc())
+            fixtureCount++;
+        }
+        genFired = true;
+        fixEl.textContent += fixtureList;
+    }  
+})
