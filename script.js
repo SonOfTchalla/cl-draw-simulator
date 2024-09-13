@@ -220,6 +220,22 @@ let teams = [
     },
 ]
 //step 2: create 4 pot arrays, each containing n/4 team objects
+let pot1 = [];
+let pot2 = [];
+let pot3 = [];
+let pot4 = [];
+
+teams.map((team) => {
+    if(team.Pot === 1){
+        pot1.push(team);
+    }else if(team.Pot === 2){
+        pot2.push(team);
+    }else if(team.Pot === 3){
+        pot3.push(team);
+    }else{
+        pot4.push(team);
+    }
+});
 
 //step 3: start the draw, randomly select a team from all the pots.
 
