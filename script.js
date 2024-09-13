@@ -250,4 +250,13 @@ function genRandomNum(num){
     return Math.floor(Math.random() * num);
 }
 
+//event listeners
+let drawFired = false
+drawBtn.addEventListener("click", () => {
+    if(!drawFired){
+        let team = teams[genRandomNum(36)].name;
+        teamEl.textContent += team;
+        drawFired = true;
+    }
+})
 //step 4: for that team, randomly select n/4 team that they will play, exluding themseles. ranmly selecting wheher home or away. 
