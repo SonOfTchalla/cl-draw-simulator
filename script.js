@@ -264,24 +264,55 @@ let team = "";
 let drawFired = false
 drawBtn.addEventListener("click", () => {
     if(!drawFired){
-        team = teams[genRandomNum(36)].name;
-        teamEl.textContent += team;
+        team = teams[genRandomNum(36)];
+        teamEl.textContent += team.name;
         drawFired = true;
     }
 })
 
-//step 4: for that team, randomly select n/4 team that they will play, exluding themseles. ranmly selecting wheher home or away. 
+//step 4: for that team, randomly select n/4 team that they will play, exluding themseles. randomly selecting wheher home or away. 
 let fixtureList = [];
 let fixtureCount = 1;
 let genFired = false;
+let place = "";
 
 genBtn.addEventListener("click", () => {
     if(!genFired){
         while(fixtureCount != 9){
-            fixtureList.push(" " + teams[genRandomNum(36)].name + genRandomLoc())
-            fixtureCount++;
+            place = genRandomLoc();
+            if(place === " (H)"){
+                if(team.homeGames === 4){
+                    fixtureList.push(" " + teams[genRandomNum(36)].name + " (A)")
+                    fixtureCount++;
+                    team.awayGames++;
+                }else{
+                    fixtureList.push(" " + teams[genRandomNum(36)].name + place)
+                    fixtureCount++;
+                    team.homeGames++;
+                }
+            }
+            else{
+                if(team.awayGames === 4){
+                    fixtureList.push(" " + teams[genRandomNum(36)].name + " (H)")
+                    fixtureCount++;
+                    team.homeGames++;
+                }else{
+                    fixtureList.push(" " + teams[genRandomNum(36)].name + place)
+                    fixtureCount++;
+                    team.awayGames++;
+                }
+            }
         }
         genFired = true;
         fixEl.textContent += fixtureList;
     }  
 })
+
+
+/*
+To-do: notes for next step
+
+1. Randomly select 8 teams but no more than two from each pot and explicitly exclude self
+2. Randomly select home or away but no more than 4 home and away fixtures EACH, eight in total
+3. Will likely need pot count variable for each pot and home and away count variable for each team, those should be in object. Utilise them
+ */
