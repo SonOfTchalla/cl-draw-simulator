@@ -260,6 +260,7 @@ function genRandomLoc(){
 }
 
 let team = "";
+let opponent = "";
 //event listener
 let drawFired = false
 drawBtn.addEventListener("click", () => {
@@ -279,25 +280,26 @@ let place = "";
 genBtn.addEventListener("click", () => {
     if(!genFired){
         while(fixtureCount != 9){
+            opponent = teams[genRandomNum(36)];
             place = genRandomLoc();
             if(place === " (H)"){
                 if(team.homeGames === 4){
-                    fixtureList.push(" " + teams[genRandomNum(36)].name + " (A)")
+                    fixtureList.push(" " + opponent.name + " (A)")
                     fixtureCount++;
                     team.awayGames++;
                 }else{
-                    fixtureList.push(" " + teams[genRandomNum(36)].name + place)
+                    fixtureList.push(" " + opponent.name + place)
                     fixtureCount++;
                     team.homeGames++;
                 }
             }
             else{
                 if(team.awayGames === 4){
-                    fixtureList.push(" " + teams[genRandomNum(36)].name + " (H)")
+                    fixtureList.push(" " + opponent.name + " (H)")
                     fixtureCount++;
                     team.homeGames++;
                 }else{
-                    fixtureList.push(" " + teams[genRandomNum(36)].name + place)
+                    fixtureList.push(" " + opponent.name + place)
                     fixtureCount++;
                     team.awayGames++;
                 }
@@ -313,6 +315,6 @@ genBtn.addEventListener("click", () => {
 To-do: notes for next step
 
 1. Randomly select 8 teams but no more than two from each pot and explicitly exclude self
-2. Randomly select home or away but no more than 4 home and away fixtures EACH, eight in total
+2. Randomly select home or away but no more than 4 home and away fixtures EACH, eight in total (done)
 3. Will likely need pot count variable for each pot and home and away count variable for each team, those should be in object. Utilise them
  */
