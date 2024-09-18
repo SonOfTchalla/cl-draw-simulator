@@ -284,28 +284,27 @@ let fixtureCount = 1;
 let genFired = false;
 let place = "";
 
+//function to change pot number
+function changePot(opp, teamss, num){
+    while(opp.Pot == num){
+        opp = teamss[genRandomNum(36)];
+    }
+}
+
 genBtn.addEventListener("click", () => {
     if(!genFired){
         while(fixtureCount != 9){
             opponent = teams[genRandomNum(36)];
 
             if(opponent.Pot == 1 && teamP1Count == 2){
-                while(opponent.Pot == 1){
-                    opponent = teams[genRandomNum(36)];
-                }
+                changePot(opponent, teams, 1);
             }
             else if(opponent.Pot == 2 && teamP2Count == 2){
-                while(opponent.Pot == 2){
-                    opponent = teams[genRandomNum(36)];
-                }
+                changePot(opponent, teams, 2);
             }else if(opponent.Pot == 3 && teamP3Count == 2){
-                while(opponent.Pot == 3){
-                    opponent = teams[genRandomNum(36)];
-                }
+                changePot(opponent, teams, 3);
             }else if(opponent.Pot == 4 && teamP4Count == 2){
-                while(opponent.Pot == 4){
-                    opponent = teams[genRandomNum(36)];
-                }
+                changePot(opponent, teams, 4);
             }
             else{
                 if(opponent.Pot == 1){
