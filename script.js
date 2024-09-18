@@ -288,39 +288,60 @@ genBtn.addEventListener("click", () => {
     if(!genFired){
         while(fixtureCount != 9){
             opponent = teams[genRandomNum(36)];
-            if(opponent.Pot == 1){
-                teamP1Count++;
-            }else if(opponent.Pot == 2){
-                teamP2Count++;
-            }else if(opponent.Pot == 3){
-                teamP3Count++;
-            }else{
-                teamP4Count++;
-            }
 
-            place = genRandomLoc();
-            if(place === " (H)"){
-                if(team.homeGames === 4){
-                    fixtureList.push(" " + opponent.name + " (A)")
-                    fixtureCount++;
-                    team.awayGames++;
-                }else{
-                    fixtureList.push(" " + opponent.name + place)
-                    fixtureCount++;
-                    team.homeGames++;
+            if(opponent.Pot == 1 && teamP1Count == 2){
+                while(opponent.Pot == 1){
+                    opponent = teams[genRandomNum(36)];
+                }
+            }
+            else if(opponent.Pot == 2 && teamP2Count == 2){
+                while(opponent.Pot == 2){
+                    opponent = teams[genRandomNum(36)];
+                }
+            }else if(opponent.Pot == 3 && teamP3Count == 2){
+                while(opponent.Pot == 3){
+                    opponent = teams[genRandomNum(36)];
+                }
+            }else if(opponent.Pot == 4 && teamP4Count == 2){
+                while(opponent.Pot == 4){
+                    opponent = teams[genRandomNum(36)];
                 }
             }
             else{
-                if(team.awayGames === 4){
-                    fixtureList.push(" " + opponent.name + " (H)")
-                    fixtureCount++;
-                    team.homeGames++;
+                if(opponent.Pot == 1){
+                    teamP1Count++;
+                }else if(opponent.Pot == 2){
+                    teamP2Count++;
+                }else if(opponent.Pot == 3){
+                    teamP3Count++;
                 }else{
-                    fixtureList.push(" " + opponent.name + place)
-                    fixtureCount++;
-                    team.awayGames++;
+                    teamP4Count++;
                 }
-            }
+
+                place = genRandomLoc();
+                if(place === " (H)"){
+                    if(team.homeGames === 4){
+                        fixtureList.push(" " + opponent.name + " (A)")
+                        fixtureCount++;
+                        team.awayGames++;
+                    }else{
+                        fixtureList.push(" " + opponent.name + place)
+                        fixtureCount++;
+                        team.homeGames++;
+                    }
+                }
+                else{
+                    if(team.awayGames === 4){
+                        fixtureList.push(" " + opponent.name + " (H)")
+                        fixtureCount++;
+                        team.homeGames++;
+                    }else{
+                        fixtureList.push(" " + opponent.name + place)
+                        fixtureCount++;
+                        team.awayGames++;
+                    }
+                }
+            }  
         }
         genFired = true;
         fixEl.textContent += fixtureList;
