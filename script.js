@@ -288,6 +288,16 @@ genBtn.addEventListener("click", () => {
     if(!genFired){
         while(fixtureCount != 9){
             opponent = teams[genRandomNum(36)];
+            if(opponent.Pot == 1){
+                teamP1Count++;
+            }else if(opponent.Pot == 2){
+                teamP2Count++;
+            }else if(opponent.Pot == 3){
+                teamP3Count++;
+            }else{
+                teamP4Count++;
+            }
+
             place = genRandomLoc();
             if(place === " (H)"){
                 if(team.homeGames === 4){
@@ -315,6 +325,10 @@ genBtn.addEventListener("click", () => {
         genFired = true;
         fixEl.textContent += fixtureList;
     }  
+    console.log(teamP1Count)
+    console.log(teamP2Count)
+    console.log(teamP3Count)
+    console.log(teamP4Count)
 })
 
 
