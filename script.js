@@ -261,6 +261,12 @@ function genRandomLoc(){
 
 let team = "";
 let opponent = "";
+
+//count variables for number of teams from each pot drawn
+let teamP1Count = 0;
+let teamP2Count = 0;
+let teamP3Count = 0;
+let teamP4Count = 0;
 //event listener
 let drawFired = false
 drawBtn.addEventListener("click", () => {
