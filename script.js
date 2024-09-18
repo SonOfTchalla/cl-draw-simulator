@@ -298,7 +298,6 @@ genBtn.addEventListener("click", () => {
 
             //check to make sure you're not drawing yourself as an opponent lol
             while(opponent === team){
-                console.log("You're playing yourself jackass")
                 opponent = teams[genRandomNum(36)];
             }
 
@@ -351,10 +350,6 @@ genBtn.addEventListener("click", () => {
         genFired = true;
         fixEl.textContent += fixtureList;
     }  
-    console.log(teamP1Count)
-    console.log(teamP2Count)
-    console.log(teamP3Count)
-    console.log(teamP4Count)
 })
 
 
